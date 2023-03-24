@@ -24,7 +24,10 @@ class FilterBox extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.w500),
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: isSelected ? Colors.blue : Colors.black,
+            ),
           ),
         ),
         InkWell(

@@ -1,5 +1,5 @@
 import 'package:filter_app/common/app_string.dart';
-import 'package:filter_app/screens/home_screen.dart';
+import 'package:filter_app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppString.appName,
-      home: HomeScreen(),
+      home: SplashScreen(),
     );
   }
 }

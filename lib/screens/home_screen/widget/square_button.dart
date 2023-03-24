@@ -25,22 +25,32 @@ class SquareButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(info.width * 0.02),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(info.width * 0.04),
-            border:
-                Border.all(color: Colors.black54, width: info.width * 0.01)),
+        padding: EdgeInsets.all(info.width * 0.03),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.blue,
+              blurRadius: 10.0,
+              spreadRadius: 2.0,
+              offset: Offset(0.0, .0),
+            )
+          ],
+        ),
         child: Column(
           children: [
             Icon(
               icon,
-              size: 50,
-              color: Colors.black54,
+              size: 60,
+              color: Colors.blue,
             ),
             Text(
               text,
               style: const TextStyle(
-                  color: Colors.black54, fontWeight: FontWeight.w500),
+                  color: Colors.blue, fontWeight: FontWeight.w500),
             )
           ],
         ),

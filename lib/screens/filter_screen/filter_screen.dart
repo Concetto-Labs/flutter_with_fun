@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:filter_app/common/app_string.dart';
+import 'package:filter_app/screens/filter_screen/widget/filter_box.dart';
 import 'package:filter_app/utils/utils.dart';
-import 'package:filter_app/widget/filter_box.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:image_picker/image_picker.dart';
-import '../utils/image_filter.dart';
+import '../../utils/image_filter.dart';
 
 class FilterScreen extends StatefulWidget {
   final XFile image;
@@ -21,6 +21,7 @@ class _FilterScreenState extends State<FilterScreen> {
   List<FilterImageModel> filterList = [];
   int selectedIndex = 0;
   GlobalKey captureKey = GlobalKey();
+  final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
@@ -118,6 +119,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   height: info.height * 0.2,
                   child: ListView.builder(
                       shrinkWrap: true,
+                      controller: scrollController,
                       itemCount: filterList.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
@@ -126,6 +128,15 @@ class _FilterScreenState extends State<FilterScreen> {
                           title: filterList[index].title,
                           selectedImage: selectedImage,
                           onTap: () {
+                            if (!(index == selectedIndex)) {
+                              scrollController.animateTo(
+                                index >= selectedIndex && !(index <= 1)
+                                    ? scrollController.position.pixels + 150
+                                    : scrollController.position.pixels - 150,
+                                duration: const Duration(milliseconds: 700),
+                                curve: Curves.easeIn,
+                              );
+                            }
                             setState(() {
                               selectedIndex = index;
                             });
