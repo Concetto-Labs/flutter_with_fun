@@ -113,42 +113,38 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
             ),
             const Spacer(),
-            Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  height: info.height * 0.2,
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      controller: scrollController,
-                      itemCount: filterList.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return FilterBox(
-                          isSelected: selectedIndex == index,
-                          title: filterList[index].title,
-                          selectedImage: selectedImage,
-                          onTap: () {
-                            if (!(index == selectedIndex)) {
-                              scrollController.animateTo(
-                                index >= selectedIndex && !(index <= 1)
-                                    ? scrollController.position.pixels + 150
-                                    : scrollController.position.pixels - 150,
-                                duration: const Duration(milliseconds: 700),
-                                curve: Curves.easeIn,
-                              );
-                            }
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                          colorFilter: filterList[index].filterColor,
-                        );
-                      }),
-                ))
+            SizedBox(
+              height: info.height * 0.2,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  controller: scrollController,
+                  itemCount: filterList.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return FilterBox(
+                      isSelected: selectedIndex == index,
+                      title: filterList[index].title,
+                      selectedImage: selectedImage,
+                      onTap: () => onItemTap(index),
+                      colorFilter: filterList[index].filterColor,
+                    );
+                  }),
+            )
           ],
         ),
       ),
     );
+  }
+
+  void onItemTap(int index) {
+    scrollController.animateTo(
+      (120 * (index - 1.1)).toDouble(),
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeIn,
+    );
+    setState(() {
+      selectedIndex = index;
+    });
   }
 
   Future<void> onNextTap(BuildContext context) async {

@@ -1,4 +1,3 @@
-import 'package:filter_app/common/app_images.dart';
 import 'package:filter_app/common/app_string.dart';
 import 'package:filter_app/screens/home_screen/widget/square_button.dart';
 import 'package:filter_app/utils/utils.dart';
@@ -26,38 +25,29 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: SafeArea(
-        child: Container(
-          decoration: selectedImageIntList == null
-              ? const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(AppImages.splashImage),
-                      fit: BoxFit.fill))
-              : null,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              //Image if not null
-              if (selectedImageIntList != null)
-                SelectedImage(uInt8list: selectedImageIntList!),
-              const Spacer(),
-              //Row menu
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SquareButton.camera(
-                        onTap: () =>
-                            onImagePickerTap(context, ImageSource.camera)),
-                    SquareButton.gallery(
-                        onTap: () =>
-                            onImagePickerTap(context, ImageSource.gallery)),
-                  ],
-                ),
+        child: Column(
+          children: [
+            //Image if not null
+            if (selectedImageIntList != null)
+              SelectedImage(uInt8list: selectedImageIntList!),
+            const Spacer(),
+            //Row menu
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  SquareButton.camera(
+                      onTap: () =>
+                          onImagePickerTap(context, ImageSource.camera)),
+                  SquareButton.gallery(
+                      onTap: () =>
+                          onImagePickerTap(context, ImageSource.gallery)),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
