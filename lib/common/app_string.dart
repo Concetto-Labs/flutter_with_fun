@@ -5,5 +5,6 @@ class AppString {
   static const String gallery = "Gallery";
   static const String camera = "Camera";
   static const String choseImage = "Choose Image";
+  static const String image = "Image";
   static const String filterImage = "Filter Image";
 }

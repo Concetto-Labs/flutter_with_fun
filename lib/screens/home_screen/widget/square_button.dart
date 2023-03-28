@@ -12,11 +12,11 @@ class SquareButton extends StatelessWidget {
       {super.key, required this.icon, required this.text, required this.onTap});
 
   const SquareButton.camera({super.key, required this.onTap})
-      : icon = Icons.camera_alt_outlined,
+      : icon = Icons.camera_alt,
         text = AppString.camera;
 
   const SquareButton.gallery({super.key, required this.onTap})
-      : icon = Icons.photo_library_outlined,
+      : icon = Icons.photo_library_rounded,
         text = AppString.gallery;
 
   @override
@@ -31,26 +31,21 @@ class SquareButton extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(10),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.blue,
-              blurRadius: 10.0,
-              spreadRadius: 2.0,
-              offset: Offset(0.0, .0),
-            )
-          ],
         ),
-        child: Column(
+        child: Row(
           children: [
             Icon(
               icon,
-              size: 60,
-              color: Colors.blue,
+              size: 25,
+              color: Colors.black54,
+            ),
+            const SizedBox(
+              width: 20,
             ),
             Text(
               text,
               style: const TextStyle(
-                  color: Colors.blue, fontWeight: FontWeight.w500),
+                  color: Colors.black54, fontWeight: FontWeight.w500),
             )
           ],
         ),
