@@ -31,10 +31,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          AppImages.splashLogo,
+          AppImages.concettoLabs,
           fit: BoxFit.fill,
-          // height: info.height,
-          // width: info.width,
+          // height: info.height / 4.2,
+          // width: info.width / 2,
         ),
       ),
     );

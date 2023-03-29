@@ -3,5 +3,5 @@ class AppImages {
 
   static const String splashImage = "assets/images/splash_image.jpg";
   static const String splashLogo = "assets/images/splash_logo.png";
-
+  static const String concettoLabs = "assets/images/concettolabs.png";
 }
